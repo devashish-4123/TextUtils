@@ -45,17 +45,17 @@ export default function Textform(props) {
       <div className="mb-3">
       <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor : props.mode === 'dark'?'#7A7A7A':'white' , color: props.mode === 'dark'?'white':'black'}} id="mybox" rows="8"></textarea>
       </div>
-      <button className="btn-primary " onClick={handleUpClick}>Convert To Uppercase</button> 
-      <button className="btn-primary mx-2" onClick={handleLwClick}>Convert To Lowercase</button> {/*mx- 2 is used for spacing between the buttons */}
-      <button className="btn-primary mx-2" onClick={handleCopy}>Copy</button>
-      <button className="btn-primary mx-2" onClick={handleClear}>Clear Text</button>
+      <button className="btn-primary mx-2 my-2 " onClick={handleUpClick}>Convert To Uppercase</button> 
+      <button className="btn-primary mx-2 my-2" onClick={handleLwClick}>Convert To Lowercase</button> {/*mx- 2 is used for spacing between the buttons */}
+      <button className="btn-primary mx-2 my-2" onClick={handleCopy}>Copy</button>
+      <button className="btn-primary mx-2 my-2" onClick={handleClear}>Clear Text</button>
     </div>
 
     <div className="container my-4" style={{color: props.mode === 'dark'?'white':'black' }}>   {/*my-4 is used for margin */}
       <h3>Your Text Summary</h3>
-      <p>Total Number of Words {text.split(" ").length}</p>
+      <p>Total Number of Words {text.split(" ").filter((element)=>{return element.length!==0}).length}</p>    {/*filter for to remove the words for spaces, filter works as whather in the return is true then this is element of array which is excuded from array METHOD OF ARRYA IN JS */}
       <p>Total Number of Characters {text.length}</p>
-      <p> Average time to read {0.08*text.split(" ").length} minutes</p>
+      <p> Average time to read {0.08*text.split(" ").filter((element)=>{return element.length!==0}).length} minutes</p>
       <h3>Preview</h3>
       <p>{text}</p>
     </div>
